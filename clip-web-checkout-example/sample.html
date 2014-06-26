@@ -1,0 +1,52 @@
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://s3.amazonaws.com/webcheckout/clip.core.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  /* initialization of the webcheckout plugin
+   * @param(jquery selector) - usually a class or id
+   * @param(user_id) - unique userid provided by PayClip
+   * @param(merchant_name) - Merchant name that will appear in the widget
+   * @param(user_token) - user token
+   * @param(access_token) - access token
+   * @param(charge_amount) - Amount charged by the Web Checkout widget
+   * @param(img_url) - url of the logo
+   * @param(time_stamp) -
+   * @param(button_name) - Text that will appear in the 'Pay' button
+   * @param(onsuccess) - function that will be called when transaction is successful
+   * @param(onfailure) - function that will be called when transaction fails
+   */
+  $('.pay-clip').payclip_widget({
+    user_id: 'pitza-hoot-8',
+    merchant_name: 'Pitza Hoot',
+    user_token: 'ksdafkljdsakjfso3edsfs',
+    access_token: '-PTuHArr6gjOdNulitEMMNxvo7USRrbGdO6ae9ESseE',
+    charge_amount: '10',
+    img_url: 'close.png',
+    time_stamp: '12',
+    button_name: 'Pay now',
+    onsuccess: success,
+    onfailure: failure
+  });
+
+  /*
+   * @return - return a JSON with receipt_id and status as success
+   */
+  function success(val) {
+    console.log(JSON.stringify(val));
+  }
+
+  /*
+   * @return - return a JSON with receipt_id and status
+   */
+  function failure(val) {
+    console.log(JSON.stringify(val));
+  }
+});
+</script>
+</head>
+<body>
+  <div class="pay-clip"></div>
+</body>
